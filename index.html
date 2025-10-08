@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantifier Practice</title>
-    <link rel="icon" href="https://static.wixstatic.com/media/0f55f2_b4662666c9b34fe58ed45b414b10cae3~mv2.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             touch-action: manipulation;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+        .app-container {
+             background-color: rgba(255, 255, 255, 0.7);
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .app-container {
+             background-color: rgba(31, 41, 55, 0.7); /* gray-800 with opacity */
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(75, 85, 99, 0.5); /* gray-600 with opacity */
         }
         .option-btn, .classification-btn {
             transition: all 0.2s ease-in-out;
@@ -75,22 +85,22 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center min-h-screen p-4">
+<body class="flex items-center justify-center min-h-screen p-4">
 
-    <div id="app-container" class="w-full max-w-md mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+    <div id="app-container" class="app-container w-full max-w-md mx-auto rounded-2xl shadow-lg overflow-hidden">
       <div class="p-4 sm:p-6">
         <!-- Main Menu Screen -->
         <div id="start-screen" class="text-center">
-            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-2">Quantifier Practice</h1>
-            <p class="text-gray-600 dark:text-gray-300 mb-8">Choose an activity to begin.</p>
+            <h1 class="text-3xl sm:text-4xl font-bold text-blue-900 dark:text-white mb-2">Quantifier Practice</h1>
+            <p class="text-blue-800 dark:text-gray-300 mb-8">Choose an activity to begin.</p>
             <div class="space-y-4">
-                <button id="start-quiz-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105">
+                <button id="start-quiz-btn" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105 shadow-md">
                     📝 Sentence Quiz
                 </button>
-                <button id="start-classification-btn" class="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105">
+                <button id="start-classification-btn" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105 shadow-md">
                     📊 Classification Game
                 </button>
-                <button id="start-gap-fill-btn" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105">
+                <button id="start-gap-fill-btn" class="w-full bg-violet-500 hover:bg-violet-600 text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105 shadow-md">
                     ✍️ Gap Fill Text
                 </button>
             </div>
@@ -98,49 +108,47 @@
 
         <!-- Sentence Quiz Screen -->
         <div id="quiz-screen" class="hidden">
-            <!-- ... content from previous version ... -->
             <div class="flex justify-between items-center mb-4">
-                <span id="question-counter" class="text-sm font-medium text-gray-500 dark:text-gray-400"></span>
-                <span id="score-counter" class="text-sm font-bold text-blue-600 dark:text-blue-400"></span>
+                <span id="question-counter" class="text-sm font-medium text-blue-700 dark:text-gray-400"></span>
+                <span id="score-counter" class="text-sm font-bold text-pink-600 dark:text-pink-400"></span>
             </div>
             <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg mb-6 text-center">
-                <p id="sentence" class="text-lg sm:text-xl text-gray-800 dark:text-white leading-relaxed"></p>
+                <p id="sentence" class="text-lg sm:text-xl text-blue-900 dark:text-white leading-relaxed"></p>
             </div>
             <div id="options-container" class="grid grid-cols-2 gap-3 sm:gap-4"></div>
             <div id="feedback-container" class="mt-6 text-center h-6"></div>
-            <button id="check-btn" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:scale-100" disabled>Check Answer</button>
+            <button id="check-btn" class="w-full mt-4 bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:scale-100" disabled>Check Answer</button>
             <button id="next-btn" class="w-full mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg text-lg hidden">Next Question</button>
         </div>
 
         <!-- Classification Game Screen -->
         <div id="classification-screen" class="hidden">
-            <!-- ... content from previous version ... -->
             <div class="flex justify-between items-center mb-4">
-                <span id="classification-question-counter" class="text-sm font-medium text-gray-500 dark:text-gray-400"></span>
-                <span id="classification-score-counter" class="text-sm font-bold text-teal-600 dark:text-teal-400"></span>
+                <span id="classification-question-counter" class="text-sm font-medium text-blue-700 dark:text-gray-400"></span>
+                <span id="classification-score-counter" class="text-sm font-bold text-amber-600 dark:text-amber-400"></span>
             </div>
             <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-lg mb-6 text-center">
-                <p class="text-3xl font-bold text-gray-800 dark:text-white" id="word-to-classify"></p>
+                <p class="text-3xl font-bold text-blue-900 dark:text-white" id="word-to-classify"></p>
             </div>
-            <p class="text-center text-gray-600 dark:text-gray-400 mb-4">Is this word countable, uncountable, or both?</p>
+            <p class="text-center text-blue-800 dark:text-gray-400 mb-4">Is this word countable, uncountable, or both?</p>
             <div id="classification-options-container" class="grid grid-cols-1 gap-3 sm:gap-4">
-                <button data-category="Countable" class="classification-btn w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Countable</button>
-                <button data-category="Uncountable" class="classification-btn w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Uncountable</button>
-                <button data-category="Both" class="classification-btn w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Both Countable & Uncountable</button>
+                <button data-category="Countable" class="classification-btn w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-blue-900 dark:text-gray-200 hover:bg-gray-100/70 dark:hover:bg-gray-600/70">Countable</button>
+                <button data-category="Uncountable" class="classification-btn w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-blue-900 dark:text-gray-200 hover:bg-gray-100/70 dark:hover:bg-gray-600/70">Uncountable</button>
+                <button data-category="Both" class="classification-btn w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-blue-900 dark:text-gray-200 hover:bg-gray-100/70 dark:hover:bg-gray-600/70">Both Countable & Uncountable</button>
             </div>
             <div id="classification-feedback-container" class="mt-6 text-center h-6"></div>
         </div>
         
         <!-- Gap Fill Screen -->
         <div id="gap-fill-screen" class="hidden">
-            <h2 class="text-2xl font-bold text-center text-gray-800 dark:text-white mb-2">Complete the Text</h2>
-            <p class="text-center text-gray-600 dark:text-gray-400 mb-6">Type one word from the list in each gap.</p>
-            <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg mb-6 text-gray-800 dark:text-white leading-relaxed text-base sm:text-lg">
+            <h2 class="text-2xl font-bold text-center text-blue-900 dark:text-white mb-2">Complete the Text</h2>
+            <p class="text-center text-blue-800 dark:text-gray-400 mb-6">Type one word in each gap.</p>
+            <div class="bg-gray-50 dark:bg-gray-700/80 p-5 rounded-lg mb-6 text-blue-900 dark:text-white leading-relaxed text-base sm:text-lg">
                 <p id="gap-fill-text">
                     Let's face it - the food industry is like fashion: there are <b>some</b> trends which people follow. The trend which began a<input data-answer="few" type="text" class="gap-input">years ago is health and wellness. You can see in restaurants and in shops that more and more consumers follow a healthy diet - they eat<input data-answer="lots,a lot" type="text" class="gap-input">of fruit and vegetables, avoid meat products and add very<input data-answer="little" type="text" class="gap-input">salt to their food. There is also another, more recent trend - functional drinks which are supposed to help you with various problems. One example is 'golden latte' - coffee with a<input data-answer="little" type="text" class="gap-input">turmeric, famous for its anti-inflammatory properties. Another drink, called Pretty Happy, which is fairly new in the shops, is a soft drink that can help you relax. Try drinking it<input data-answer="every" type="text" class="gap-input">day, and you will feel less stressed after one week.
                 </p>
             </div>
-            <button id="check-gaps-btn" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105">Check Answers</button>
+            <button id="check-gaps-btn" class="w-full bg-violet-500 hover:bg-violet-600 text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105">Check Answers</button>
             <div id="gap-fill-results" class="mt-6 text-center h-6 font-semibold text-lg"></div>
             <button id="gap-fill-menu-btn" class="w-full mt-4 bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-lg text-lg hidden">Back to Menu</button>
         </div>
@@ -148,9 +156,8 @@
 
         <!-- End Screen -->
         <div id="end-screen" class="hidden text-center">
-            <!-- ... content from previous version ... -->
-            <h2 id="end-title" class="text-3xl font-bold text-gray-800 dark:text-white mb-2"></h2>
-            <p class="text-gray-600 dark:text-gray-300 mb-6">Well done! Here's your final score.</p>
+            <h2 id="end-title" class="text-3xl font-bold text-blue-900 dark:text-white mb-2"></h2>
+            <p class="text-blue-800 dark:text-gray-300 mb-6">Well done! Here's your final score.</p>
             <div id="end-score-circle" class="p-8 rounded-full w-48 h-48 mx-auto flex flex-col items-center justify-center mb-8">
                 <span class="text-5xl font-bold" id="final-score"></span>
                 <span class="text-lg" id="total-questions"></span>
@@ -205,7 +212,7 @@
         const endScoreCircle = document.getElementById('end-score-circle');
         const restartBtn = document.getElementById('restart-btn');
 
-        // --- Data (omitting for brevity, it's the same as before) ---
+        // --- Data ---
         const quizQuestions = [
             { sentence: "There isn't ___ coffee left.", options: ["much", "many", "few", "every"], answer: "much" }, { sentence: "She has ___ friends who live in London.", options: ["a lot of", "much", "little", "each"], answer: "a lot of" }, { sentence: "Can I have ___ water, please?", options: ["some", "any", "every", "few"], answer: "some" }, { sentence: "I don't have ___ money with me.", options: ["any", "some", "much", "a lot of"], answer: "any" }, { sentence: "There are only a ___ apples in the basket.", options: ["few", "little", "much", "every"], answer: "few" }, { sentence: "We have ___ time, so we need to hurry.", options: ["little", "few", "many", "some"], answer: "little" }, { sentence: "___ student in the class passed the exam.", options: ["Every", "Some", "Any", "Much"], answer: "Every" }, { sentence: "There isn't ___ space for another chair.", options: ["enough", "many", "lots of", "few"], answer: "enough" }, { sentence: "How ___ pages did you read?", options: ["many", "much", "little", "any"], answer: "many" }, { sentence: "___ of the players has their own uniform.", options: ["Each", "Some", "Any", "Much"], answer: "Each" }
         ];
@@ -217,7 +224,7 @@
         let currentQuestionIndex = 0;
         let score = 0;
         let selectedAnswer = null;
-        let currentGame = null; // 'quiz', 'classification', or 'gap-fill'
+        let currentGame = null; 
         let shuffledQuestions = [];
 
         // --- Utility Functions ---
@@ -231,14 +238,14 @@
             screen.classList.remove('hidden');
         }
 
-        // --- Sentence Quiz Logic (no changes) ---
+        // --- Sentence Quiz Logic ---
         function startQuiz() { currentGame = 'quiz'; showScreen(quizScreen); currentQuestionIndex = 0; score = 0; shuffledQuestions = shuffleArray([...quizQuestions]); loadQuizQuestion(); }
-        function loadQuizQuestion() { selectedAnswer = null; checkBtn.disabled = true; nextBtn.classList.add('hidden'); checkBtn.classList.remove('hidden'); feedbackContainer.innerHTML = ''; optionsContainer.innerHTML = ''; const question = shuffledQuestions[currentQuestionIndex]; sentenceEl.innerHTML = question.sentence.replace('___', '<span class="font-bold text-blue-500 dark:text-blue-400">___</span>'); questionCounter.textContent = `Question ${currentQuestionIndex + 1}/${shuffledQuestions.length}`; scoreCounter.textContent = `Score: ${score}`; shuffleArray(question.options).forEach(option => { const button = document.createElement('button'); button.textContent = option; button.className = 'option-btn w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600'; button.onclick = () => selectOption(button, option); optionsContainer.appendChild(button); }); }
+        function loadQuizQuestion() { selectedAnswer = null; checkBtn.disabled = true; nextBtn.classList.add('hidden'); checkBtn.classList.remove('hidden'); feedbackContainer.innerHTML = ''; optionsContainer.innerHTML = ''; const question = shuffledQuestions[currentQuestionIndex]; sentenceEl.innerHTML = question.sentence.replace('___', '<span class="font-bold text-pink-500 dark:text-pink-400">___</span>'); questionCounter.textContent = `Question ${currentQuestionIndex + 1}/${shuffledQuestions.length}`; scoreCounter.textContent = `Score: ${score}`; shuffleArray(question.options).forEach(option => { const button = document.createElement('button'); button.textContent = option; button.className = 'option-btn w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-blue-900 dark:text-gray-200 hover:bg-gray-100/70 dark:hover:bg-gray-600/70'; button.onclick = () => selectOption(button, option); optionsContainer.appendChild(button); }); }
         function selectOption(button, option) { Array.from(optionsContainer.children).forEach(btn => btn.classList.remove('selected')); button.classList.add('selected'); selectedAnswer = option; checkBtn.disabled = false; }
         function checkQuizAnswer() { const question = shuffledQuestions[currentQuestionIndex]; const isCorrect = selectedAnswer === question.answer; Array.from(optionsContainer.children).forEach(button => { button.disabled = true; if (button.textContent === question.answer) button.classList.add('correct'); if (button.classList.contains('selected') && !isCorrect) button.classList.add('incorrect'); }); if (isCorrect) { score++; feedbackContainer.innerHTML = `<p class="text-green-600 dark:text-green-400 font-semibold feedback-animation">Correct!</p>`; } else { feedbackContainer.innerHTML = `<p class="text-red-500 dark:text-red-400 font-semibold feedback-animation">Answer: "${question.answer}"</p>`; } scoreCounter.textContent = `Score: ${score}`; checkBtn.classList.add('hidden'); nextBtn.classList.remove('hidden'); }
         function nextQuizQuestion() { currentQuestionIndex++; if (currentQuestionIndex < shuffledQuestions.length) { loadQuizQuestion(); } else { showEndScreen(score, shuffledQuestions.length); } }
 
-        // --- Classification Game Logic (no changes) ---
+        // --- Classification Game Logic ---
         function startClassificationGame() { currentGame = 'classification'; showScreen(classificationScreen); currentQuestionIndex = 0; score = 0; shuffledQuestions = shuffleArray([...classificationWords]); loadClassificationWord(); }
         function loadClassificationWord() { classificationFeedbackContainer.innerHTML = ''; const question = shuffledQuestions[currentQuestionIndex]; wordToClassify.textContent = question.word; classificationQuestionCounter.textContent = `Word ${currentQuestionIndex + 1}/${shuffledQuestions.length}`; classificationScoreCounter.textContent = `Score: ${score}`; const buttons = classificationOptionsContainer.querySelectorAll('.classification-btn'); buttons.forEach(button => { button.disabled = false; button.classList.remove('correct', 'incorrect'); button.onclick = () => checkClassificationAnswer(button.dataset.category); }); }
         function checkClassificationAnswer(selectedCategory) { const question = shuffledQuestions[currentQuestionIndex]; const isCorrect = selectedCategory === question.category; const buttons = classificationOptionsContainer.querySelectorAll('.classification-btn'); buttons.forEach(button => { button.disabled = true; if (button.dataset.category === question.category) button.classList.add('correct'); if (button.dataset.category === selectedCategory && !isCorrect) button.classList.add('incorrect'); }); if (isCorrect) { score++; classificationFeedbackContainer.innerHTML = `<p class="text-green-600 dark:text-green-400 font-semibold feedback-animation">Correct!</p>`; } else { classificationFeedbackContainer.innerHTML = `<p class="text-red-500 dark:text-red-400 font-semibold feedback-animation">Correct answer: ${question.category}</p>`; } classificationScoreCounter.textContent = `Score: ${score}`; setTimeout(() => { currentQuestionIndex++; if (currentQuestionIndex < shuffledQuestions.length) { loadClassificationWord(); } else { showEndScreen(score, shuffledQuestions.length); } }, 1500); }
@@ -278,7 +285,24 @@
         }
 
         // --- End Screen Logic ---
-        function showEndScreen(finalScore, totalQuestions) { showScreen(endScreen); finalScoreEl.textContent = finalScore; totalQuestionsEl.textContent = `out of ${totalQuestions}`; if(currentGame === 'quiz') { endTitle.textContent = 'Quiz Complete!'; endScoreCircle.className = 'p-8 rounded-full w-48 h-48 mx-auto flex flex-col items-center justify-center mb-8 bg-blue-50 dark:bg-gray-700'; finalScoreEl.className = 'text-5xl font-bold text-blue-600 dark:text-blue-300'; totalQuestionsEl.className = 'text-lg text-blue-500 dark:text-blue-400'; restartBtn.className = 'w-full text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105 bg-blue-500 hover:bg-blue-600'; } else { endTitle.textContent = 'Game Over!'; endScoreCircle.className = 'p-8 rounded-full w-48 h-48 mx-auto flex flex-col items-center justify-center mb-8 bg-teal-50 dark:bg-gray-700'; finalScoreEl.className = 'text-5xl font-bold text-teal-600 dark:text-teal-300'; totalQuestionsEl.className = 'text-lg text-teal-500 dark:text-teal-400'; restartBtn.className = 'w-full text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105 bg-teal-500 hover:bg-teal-600'; } }
+        function showEndScreen(finalScore, totalQuestions) { 
+            showScreen(endScreen); 
+            finalScoreEl.textContent = finalScore; 
+            totalQuestionsEl.textContent = `out of ${totalQuestions}`; 
+            if(currentGame === 'quiz') { 
+                endTitle.textContent = 'Quiz Complete!'; 
+                endScoreCircle.className = 'p-8 rounded-full w-48 h-48 mx-auto flex flex-col items-center justify-center mb-8 bg-pink-50 dark:bg-gray-700/80'; 
+                finalScoreEl.className = 'text-5xl font-bold text-pink-600 dark:text-pink-300'; 
+                totalQuestionsEl.className = 'text-lg text-pink-500 dark:text-pink-400'; 
+                restartBtn.className = 'w-full text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105 bg-pink-500 hover:bg-pink-600'; 
+            } else if (currentGame === 'classification') { 
+                endTitle.textContent = 'Game Over!'; 
+                endScoreCircle.className = 'p-8 rounded-full w-48 h-48 mx-auto flex flex-col items-center justify-center mb-8 bg-amber-50 dark:bg-gray-700/80'; 
+                finalScoreEl.className = 'text-5xl font-bold text-amber-600 dark:text-amber-300'; 
+                totalQuestionsEl.className = 'text-lg text-amber-500 dark:text-amber-400'; 
+                restartBtn.className = 'w-full text-white font-bold py-3 px-4 rounded-lg text-lg transition-transform transform hover:scale-105 bg-amber-500 hover:bg-amber-600'; 
+            } 
+        }
         function restartGame() { if (currentGame === 'quiz') { startQuiz(); } else if (currentGame === 'classification') { startClassificationGame(); } }
         
         // --- Event Listeners ---
@@ -297,4 +321,5 @@
     </script>
 </body>
 </html>
+
 
